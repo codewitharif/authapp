@@ -40,7 +40,7 @@ const Login = () => {
 
     const res = await data.json();
     if (res.status === 200) {
-      alert("login success");
+      alert("login successfully!");
       localStorage.setItem("usersdatatoken", res.result.token);
       setInpval({ ...inpval, email: "", password: "" });
       navigate("/dashboard");

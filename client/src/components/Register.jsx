@@ -48,7 +48,7 @@ const Register = () => {
 
       const res = await data.json();
       if (res.status === 201) {
-        alert("added");
+        alert("account created successfully!");
         setInpval({
           ...inpval,
           fname: "",
