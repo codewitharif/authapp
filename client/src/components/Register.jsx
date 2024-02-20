@@ -33,7 +33,7 @@ const Register = () => {
       setError("Passwords do not match");
       return;
     } else {
-      const data = await fetch("http://localhost:8003/register", {
+      const data = await fetch("https://authappserver.vercel.app/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

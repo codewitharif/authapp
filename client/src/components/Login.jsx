@@ -26,7 +26,7 @@ const Login = () => {
 
     const { email, password } = inpval;
 
-    const data = await fetch("http://localhost:8003/login", {
+    const data = await fetch("https://authappserver.vercel.app/login", {
       method: "POST",
       credentials: "include",
       headers: {
