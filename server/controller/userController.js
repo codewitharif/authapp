@@ -29,7 +29,7 @@ exports.userRegister = async (req, res) => {
       });
 
       await userData.save();
-      res.status(200).json({ status: 201, userData });
+      res.status(201).json({ status: 201, userData });
     }
   } catch (error) {
     res.status(400).json(error);
