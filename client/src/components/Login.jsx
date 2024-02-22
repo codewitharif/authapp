@@ -56,7 +56,7 @@ const Login = () => {
             <h1>Welcome back, Login</h1>
             <p>We are glad, you are back</p>
           </div>
-          <form>
+          <form onSubmit={loginUser}>
             <div className="form_input">
               <label htmlFor="email">Email</label>
               <input
@@ -89,7 +89,7 @@ const Login = () => {
                 </div>
               </div>
             </div>
-            <button className="btn" onClick={loginUser}>
+            <button className="btn" type="submit">
               Login
             </button>
             <p>
