@@ -24,13 +24,20 @@ const Register = () => {
   };
 
   const validateForm = () => {
-    if (
-      !inpval.fname ||
-      !inpval.email ||
-      !inpval.password ||
-      !inpval.cpassword
-    ) {
-      setError("All fields are required");
+    if (!inpval.fname) {
+      setError("Name is required!");
+      return false;
+    }
+    if (!inpval.email) {
+      setError("Email is required!");
+      return false;
+    }
+    if (!inpval.password) {
+      setError("Password is required!");
+      return false;
+    }
+    if (!inpval.cpassword) {
+      setError("Confirm Password is required!");
       return false;
     }
     if (inpval.password !== inpval.cpassword) {
