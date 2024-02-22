@@ -25,45 +25,46 @@ const Register = () => {
 
   const addUserdata = async (e) => {
     e.preventDefault();
-
     const { fname, email, password, cpassword } = inpval;
-
-    // Check if passwords match
-    if (password !== cpassword) {
-      setError("Passwords do not match");
-      return;
-    } else {
-      const data = await fetch("https://authappserver.vercel.app/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fname,
-          email,
-          password,
-          cpassword,
-        }),
-      });
-
-      const res = await data.json();
-      if (res.status === 201) {
-        alert("account created successfully!");
-        setInpval({
-          ...inpval,
-          fname: "",
-          email: "",
-          password: "",
-          cpassword: "",
+    try {
+      // Check if passwords match
+      if (password !== cpassword) {
+        setError("Passwords do not match");
+        return;
+      } else {
+        const data = await fetch("https://authappserver.vercel.app/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fname,
+            email,
+            password,
+            cpassword,
+          }),
         });
-        navigate("/");
+
+        const res = await data.json();
+        if (res.status === 201) {
+          alert("account created successfully!");
+          setInpval({
+            ...inpval,
+            fname: "",
+            email: "",
+            password: "",
+            cpassword: "",
+          });
+          navigate("/");
+        }
       }
+    } catch (error) {
+      setError(error);
+      console.log(error);
     }
 
     // If validation passes, you can proceed with form submission
     // Reset error state
-    setError("");
-    console.log("user registration succesfull");
   };
 
   return (
