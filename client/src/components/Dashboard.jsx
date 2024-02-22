@@ -37,6 +37,7 @@ const Dashboard = () => {
       <p style={{ textAlign: "center", marginTop: "20px" }}>
         Welcome back,{" "}
         <b>{logindata.ValidUserOne && logindata.ValidUserOne.fname}</b>!
+        <br />
         Registered Email :{" "}
         <b>{logindata.ValidUserOne && logindata.ValidUserOne.email}</b>
       </p>
