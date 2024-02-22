@@ -51,7 +51,7 @@ const Header = () => {
   return (
     <header>
       <nav>
-        <h1>ACCESS++</h1>
+        <h1>ExtraSecure</h1>
 
         <div className="avtar">
           {logindata.ValidUserOne ? (

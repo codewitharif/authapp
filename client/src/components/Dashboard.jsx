@@ -35,8 +35,17 @@ const Dashboard = () => {
   return (
     <>
       <p style={{ textAlign: "center", marginTop: "20px" }}>
-        User Email :{" "}
+        Welcome back,{" "}
+        <b>{logindata.ValidUserOne && logindata.ValidUserOne.fname}</b>!
+        Registered Email :{" "}
         <b>{logindata.ValidUserOne && logindata.ValidUserOne.email}</b>
+      </p>
+
+      <p style={{ textAlign: "center", marginTop: "20px" }}>
+        🎉 Explore new features & reach out if you need help.
+        <br /> Enjoy your time with us! -
+        <br />
+        ExtraSecure Team 🚀
       </p>
     </>
   );
