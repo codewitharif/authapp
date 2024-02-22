@@ -53,7 +53,7 @@ const Login = () => {
       <section>
         <div className="form_data">
           <div className="form_heading">
-            <h1>Welcome back, Login</h1>
+            <h1>Login</h1>
             <p>We are glad, you are back</p>
           </div>
           <form onSubmit={loginUser}>
