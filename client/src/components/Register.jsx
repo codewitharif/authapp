@@ -26,6 +26,7 @@ const Register = () => {
   const addUserdata = async (e) => {
     e.preventDefault();
     const { fname, email, password, cpassword } = inpval;
+    console.log(fname, email, password, cpassword);
     try {
       // Check if passwords match
       if (password !== cpassword) {
