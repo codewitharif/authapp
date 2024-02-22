@@ -32,6 +32,10 @@ const Register = () => {
       setError("Email is required!");
       return false;
     }
+    if (!inpval.email.includes("@")) {
+      setError("Please type valid email!");
+      return false;
+    }
     if (!inpval.password) {
       setError("Password is required!");
       return false;
