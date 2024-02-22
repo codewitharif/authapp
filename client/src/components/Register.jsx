@@ -23,49 +23,60 @@ const Register = () => {
     }));
   };
 
+  const validateForm = () => {
+    if (
+      !inpval.fname ||
+      !inpval.email ||
+      !inpval.password ||
+      !inpval.cpassword
+    ) {
+      setError("All fields are required");
+      return false;
+    }
+    if (inpval.password !== inpval.cpassword) {
+      setError("Passwords do not match");
+      return false;
+    }
+    // Add more validations as needed, e.g., email format, password strength
+    return true;
+  };
+
   const addUserdata = async (e) => {
     e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
     const { fname, email, password, cpassword } = inpval;
-    console.log(fname, email, password, cpassword);
     try {
-      // Check if passwords match
-      if (password !== cpassword) {
-        setError("Passwords do not match");
-        return;
-      } else {
-        const data = await fetch("https://authappserver.vercel.app/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fname,
-            email,
-            password,
-            cpassword,
-          }),
-        });
+      const data = await fetch("https://authappserver.vercel.app/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fname,
+          email,
+          password,
+          cpassword,
+        }),
+      });
 
-        const res = await data.json();
-        if (res.status === 201) {
-          alert("account created successfully!");
-          setInpval({
-            ...inpval,
-            fname: "",
-            email: "",
-            password: "",
-            cpassword: "",
-          });
-          navigate("/");
-        }
+      const res = await data.json();
+      if (res.status === 201) {
+        alert("account created successfully!");
+        setInpval({
+          ...inpval,
+          fname: "",
+          email: "",
+          password: "",
+          cpassword: "",
+        });
+        navigate("/");
       }
     } catch (error) {
-      setError(error);
+      setError("Error occurred while registering");
       console.log(error);
     }
-
-    // If validation passes, you can proceed with form submission
-    // Reset error state
   };
 
   return (
@@ -136,6 +147,7 @@ const Register = () => {
                   required={true}
                   minLength={6}
                 />
+
                 <div
                   className="showpass"
                   onClick={() => setCPassShow(!passCShow)}
